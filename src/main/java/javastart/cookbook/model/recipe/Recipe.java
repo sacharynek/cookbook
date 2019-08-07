@@ -16,7 +16,7 @@ public class Recipe {
     private Long id;
 
 
-    private Map<Ingredient, Integer> ingredientAmountMap; //ingredient and amount
+   // private Map<Ingredient, Integer> ingredientAmountMap; //ingredient and amount
 
     private String instruction;
 

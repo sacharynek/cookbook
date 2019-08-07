@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Skladniki</h1>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>UNIT</th>
+    <th>Szczegóły</th>
+    <th>Edytuj</th>
+    <th>Usuń</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr th:each="ingredient: ${ingredients}">
+    <td th:text="${ingredient.id}"></td>
+    <td th:text="${ingredient.name}"></td>
+    <td th:text="${ingredient.unit}"></td>
+    <td><a th:href="@{'/'+${ingredient.id}}">DETAILS</a></td>
+    <td><a th:href="@{'/'+${ingredient.id}+'/edit'}">EDIT</a></td>
+    <td><a th:href="@{'/'+${ingredient.id}+'/delete'}">DELETE</a></td>
+
+  </tr>
+
+
+  </tbody>
+</table>
+
+<ul>
+  <li th:each="ing: ${ingredients}">
+    <span th:text="${ing.getId()}"></span>
+    <span th:text="${ing.name}"></span>
+    <span th:text="${ing.unit}"></span>
+    <!--      <a th:href="|/edytuj?id=${meal.id}|">Edytuj</a>-->
+    <!--      <a th:href="|/usun?id=${meal.id}|">Usuń</a>-->
+  </li>
+</ul>
+
+<a href="/">powrót do menu</a>
+</body>
+</html>

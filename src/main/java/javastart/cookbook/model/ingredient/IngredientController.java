@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("/ingredient")
+@RequestMapping("/ingredients")
 @Controller
 public class IngredientController {
 
@@ -29,7 +29,7 @@ public class IngredientController {
         List<Ingredient> ingredients = ingredientRepository.findAll();
         model.addAttribute("ingredients", ingredients);
 
-        return "ingredients";
+        return "ingredient/ingredients";
     }
 
 
@@ -39,7 +39,7 @@ public class IngredientController {
 
         Optional<Ingredient> ingredientOption = ingredientRepository.findById(id);
 
-        //Ingredient ingredient = ingredientOption.orElse(null);
+
 
         if (ingredientOption.isPresent()) {
             Ingredient ingredient = ingredientOption.get();
@@ -51,7 +51,7 @@ public class IngredientController {
 
     }
 
-
+    //przekierowuje na formularz do dodania nowego składnika
     @GetMapping("/add")
     public String editChosenIngriedient(Model model) {
         Ingredient ingredient = new Ingredient();
@@ -60,6 +60,7 @@ public class IngredientController {
         return "addIngredientForm";
     }
 
+    //dodaje nowy składnik do bazy danych
     @PostMapping("/add")
     public String editChosenIngriedient(Ingredient ingredient) {
 

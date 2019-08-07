@@ -19,5 +19,5 @@ public class CookBook {
     private Category category;//zrobić mozliwośc dodawania nowych kategorii
 
 
-    private List<Recipe> recipeList;
+    //private List<Recipe> recipeList;
 }
