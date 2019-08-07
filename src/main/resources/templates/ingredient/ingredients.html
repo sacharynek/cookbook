@@ -35,15 +35,7 @@
   </tbody>
 </table>
 
-<ul>
-  <li th:each="ing: ${ingredients}">
-    <span th:text="${ing.getId()}"></span>
-    <span th:text="${ing.name}"></span>
-    <span th:text="${ing.unit}"></span>
-    <!--      <a th:href="|/edytuj?id=${meal.id}|">Edytuj</a>-->
-    <!--      <a th:href="|/usun?id=${meal.id}|">Usuń</a>-->
-  </li>
-</ul>
+
 
 <a href="/">powrót do menu</a>
 <a href="/ingredients/add">dodaj nowy składnik</a>
