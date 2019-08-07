@@ -39,8 +39,6 @@ public class IngredientController {
 
         Optional<Ingredient> ingredientOption = ingredientRepository.findById(id);
 
-
-
         if (ingredientOption.isPresent()) {
             Ingredient ingredient = ingredientOption.get();
             model.addAttribute("ingredient", ingredient);
@@ -54,10 +52,9 @@ public class IngredientController {
     //przekierowuje na formularz do dodania nowego składnika
     @GetMapping("/add")
     public String editChosenIngriedient(Model model) {
-        Ingredient ingredient = new Ingredient();
-        model.addAttribute("ingredient", ingredient);
 
-        return "addIngredientForm";
+
+        return "ingredient/addIngredientForm";
     }
 
     //dodaje nowy składnik do bazy danych
@@ -66,7 +63,7 @@ public class IngredientController {
 
         ingredientRepository.save(ingredient);
 
-        return "redirect:/";
+        return "redirect:/ingredients/";
     }
 
     @GetMapping("/{id}/edit")
@@ -97,8 +94,6 @@ public class IngredientController {
             return "notFound";
         }
 
-
     }
-
 
 }
