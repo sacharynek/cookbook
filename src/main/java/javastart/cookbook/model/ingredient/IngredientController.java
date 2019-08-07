@@ -74,7 +74,8 @@ public class IngredientController {
         if (ingredientOption.isPresent()) {
             Ingredient ingredient = ingredientOption.get();
             model.addAttribute("ingredient", ingredient);
-            return "ingredient/ingredientEditForm";
+            model.addAttribute("units", Unit.values());
+            return "ingredient/editIngredientForm";
         } else {
             return "notFound";
         }

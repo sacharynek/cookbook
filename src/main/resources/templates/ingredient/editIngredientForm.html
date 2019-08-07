@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<p th:text="|Edytujesz składnik o id: ${ingredient.id}|"></p>
+
+<form action="/ingredients/add" th:object="${ingredient}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <input type="text" th:field="*{name}" />
+
+  <select th:field="*{unit}">
+    <option th:each="unit: ${units}"
+            th:text="${unit.name()}"
+            th:value="${unit.name()}">
+    </option>
+  </select>
+
+  <input type="submit" value="Zapisz zmiany" />
+
+
+
+
+
+</body>
+</html>
