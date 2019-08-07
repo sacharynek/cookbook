@@ -92,7 +92,7 @@ public class IngredientController {
         if (ingredientOption.isPresent()) {
             Ingredient ingredient = ingredientOption.get();
             ingredientRepository.delete(ingredient);
-            return "redirec:/";
+            return "redirect:/ingredients/";
         } else {
             return "notFound";
         }

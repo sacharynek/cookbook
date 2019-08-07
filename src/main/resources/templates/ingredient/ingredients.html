@@ -25,10 +25,10 @@
     <td th:text="${ingredient.id}"></td>
     <td th:text="${ingredient.name}"></td>
     <td th:text="${ingredient.unit}"></td>
-    <td><a th:href="@{'/'+${ingredient.id}}">DETAILS</a></td>
-    <td><a th:href="@{'/'+${ingredient.id}+'/edit'}">EDIT</a></td>
-    <td><a th:href="@{'/'+${ingredient.id}+'/delete'}">DELETE</a></td>
-
+<!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
+    <td><a th:href="|/ingredients/${ingredient.id}/|">DETAILS</a></td>
+    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/edit'}">EDIT</a></td>
+    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/delete'}">DELETE</a></td>
   </tr>
 
 
