@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Skladniki</h1>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+
+    <th>Szczegóły</th>
+    <th>Edytuj</th>
+    <th>Usuń</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr th:each="ingredient: ${ingredients}">
+    <td th:text="${ingredient.id}"></td>
+    <td th:text="${ingredient.name}"></td>
+    <!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
+    <td><a th:href="|/ingredients/${ingredient.id}/|">DETAILS</a></td>
+    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/edit'}">EDIT</a></td>
+    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/delete'}">DELETE</a></td>
+  </tr>
+
+
+  </tbody>
+</table>
+
+
+<a href="/">powrót do menu</a>
+<a href="/ingredients/add">dodaj nowy składnik</a>
+</body>
+</html>

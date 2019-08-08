@@ -31,6 +31,10 @@ public class Recipe {
 
     private boolean isDraft;
     private LocalDateTime draftCreationDateTime;
+    /** todo
+     * kategorie - zastanów sie czy ma to być select, czy po prostu pole string?
+     * licznik do przechowywania ilości lików w przepisie - pamiętaj że kliknięcie lubię to  dodaje, a odkliknęcie odejmuje*/
+
 
     public Recipe() {
     }
