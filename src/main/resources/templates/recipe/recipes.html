@@ -10,6 +10,7 @@
   <li>
     <a th:href="@{'/recipes/'+${recipe.id}}"><span th:text="${recipe.getName()}"></span></a>
     <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
+    <a th:href="@{'/recipes/'+${recipe.id}+'/edit'}">Edytuj</a>
   </li>
 </ul>
 
