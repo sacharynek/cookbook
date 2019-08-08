@@ -21,11 +21,11 @@ public class RecipeIngredient {
     Long id;
 
     @ManyToOne
-    @JoinColumn(name="recipe_id")
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
     @ManyToOne
-    @JoinColumn(name="ingredient_id")
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
     @Enumerated(EnumType.STRING)

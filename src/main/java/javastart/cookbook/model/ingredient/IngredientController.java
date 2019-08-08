@@ -53,7 +53,6 @@ public class IngredientController {
     @GetMapping("/add")
     public String editChosenIngriedient(Model model) {
 
-
         return "ingredient/addIngredientForm";
     }
 

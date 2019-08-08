@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul th:each="recipe: ${recipes}">
+  <li>
+    <a th:href="@{'/recipes/'+${recipe.id}}"><span th:text="${recipe.getName()}"></span></a>
+    <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
+  </li>
+</ul>
+
+<a href="/recipes/add">Dodaj</a>
+</body>
+</html>

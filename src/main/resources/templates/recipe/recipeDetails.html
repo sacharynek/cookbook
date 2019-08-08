@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul>
+  <li th:text="${recipe.getName()}"></li>
+  <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
+  <li th:text="${recipe.getInstruction()}"></li>
+</ul>
+
+
+</body>
+</html>

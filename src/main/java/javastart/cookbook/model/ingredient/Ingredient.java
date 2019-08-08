@@ -28,6 +28,7 @@ public class Ingredient {
     public Ingredient(String name) {
         this.name = name;
 
+
     }
 
     public Long getId() {
@@ -46,5 +47,12 @@ public class Ingredient {
         this.name = name;
     }
 
+    public List<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
+    }
 
 }

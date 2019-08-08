@@ -13,7 +13,7 @@
   <tr>
     <th>ID</th>
     <th>NAME</th>
-    <th>UNIT</th>
+
     <th>Szczegóły</th>
     <th>Edytuj</th>
     <th>Usuń</th>
@@ -24,8 +24,7 @@
   <tr th:each="ingredient: ${ingredients}">
     <td th:text="${ingredient.id}"></td>
     <td th:text="${ingredient.name}"></td>
-    <td th:text="${ingredient.unit}"></td>
-<!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
+    <!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
     <td><a th:href="|/ingredients/${ingredient.id}/|">DETAILS</a></td>
     <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/edit'}">EDIT</a></td>
     <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/delete'}">DELETE</a></td>
@@ -34,7 +33,6 @@
 
   </tbody>
 </table>
-
 
 
 <a href="/">powrót do menu</a>

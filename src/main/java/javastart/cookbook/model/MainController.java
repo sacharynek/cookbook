@@ -9,7 +9,7 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String getMainPage(Model model){
+    public String getMainPage(Model model) {
 
         return "index";
     }

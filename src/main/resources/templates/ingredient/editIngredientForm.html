@@ -9,21 +9,18 @@
 
 <p th:text="|Edytujesz składnik o id: ${ingredient.id}|"></p>
 
-<form action="/ingredients/add" th:object="${ingredient}" method="post">
-  <input type="hidden" th:field="*{id}" />
-  <input type="text" th:field="*{name}" />
+<form action="/ingredients/add" method="post" th:object="${ingredient}">
+  <input th:field="*{id}" type="hidden"/>
+  <input th:field="*{name}" type="text"/>
 
-  <select th:field="*{unit}">
-    <option th:each="unit: ${units}"
-            th:text="${unit.name()}"
-            th:value="${unit.name()}">
-    </option>
-  </select>
+<!--  <select th:field="*{unit}">-->
+<!--    <option th:each="unit: ${units}"-->
+<!--            th:text="${unit.name()}"-->
+<!--            th:value="${unit.name()}">-->
+<!--    </option>-->
+<!--  </select>-->
 
-  <input type="submit" value="Zapisz zmiany" />
-
-
-
+  <input type="submit" value="Zapisz zmiany"/>
 
 
 </body>
