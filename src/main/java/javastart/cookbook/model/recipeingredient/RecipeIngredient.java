@@ -33,4 +33,60 @@ public class RecipeIngredient {
 
     private int amount;
 
+    public RecipeIngredient() {
+    }
+
+    public RecipeIngredient(Recipe recipe, Ingredient ingredient, Unit unit, int amount) {
+        this.recipe = recipe;
+        this.ingredient = ingredient;
+        this.unit = unit;
+        this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return ingredient.getName() +
+                " " + amount +
+                " " + unit ;
+    }
 }

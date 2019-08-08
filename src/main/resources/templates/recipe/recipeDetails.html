@@ -8,10 +8,15 @@
 
 <ul>
   <li th:text="${recipe.getName()}"></li>
+  <ul th:each="recipeIngredient: ${recipe.getRecipeIngredient()}">
+    <li th:text="${recipeIngredient}"></li>
+  </ul>
+
   <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
   <li th:text="${recipe.getInstruction()}"></li>
 </ul>
 
+<a href="/recipes/">Powrót</a>
 
 </body>
 </html>

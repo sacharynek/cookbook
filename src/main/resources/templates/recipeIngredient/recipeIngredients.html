@@ -12,22 +12,26 @@
   <thead>
   <tr>
     <th>ID</th>
-    <th>NAME</th>
-
-    <th>Szczegóły</th>
+    <th>Ingredient NAME</th>
+    <th>Recipe NAME</th>
+    <th>Ilość</th>
+    <th>Jednostki</th>
     <th>Edytuj</th>
     <th>Usuń</th>
   </tr>
   </thead>
   <tbody>
 
-  <tr th:each="ingredient: ${ingredients}">
-    <td th:text="${ingredient.id}"></td>
-    <td th:text="${ingredient.name}"></td>
+  <tr th:each="recipeIngredient: ${recipeIngredients}">
+    <td th:text="${recipeIngredient.id}"></td>
+    <td th:text="${recipeIngredient.getIngredient().getName()}"></td>
+    <td th:text="${recipeIngredient.getRecipe().getName()}"></td>
+    <td th:text="${recipeIngredient.getAmount()}"></td>
+    <td th:text="${recipeIngredient.getUnit()}"></td>
     <!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
-    <td><a th:href="|/ingredients/${ingredient.id}/|">DETAILS</a></td>
-    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/edit'}">EDIT</a></td>
-    <td><a th:href="@{'/ingredients/'+${ingredient.id}+'/delete'}">DELETE</a></td>
+    <td><a th:href="|/recipeIngredients/${recipeIngredient.id}/|">DETAILS</a></td>
+    <td><a th:href="@{'/recipeIngredients/'+${recipeIngredient.id}+'/edit'}">EDIT</a></td>
+    <td><a th:href="@{'/recipeIngredients/'+${recipeIngredient.id}+'/delete'}">DELETE</a></td>
   </tr>
 
 

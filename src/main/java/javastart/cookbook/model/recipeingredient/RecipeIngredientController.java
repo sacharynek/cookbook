@@ -22,7 +22,7 @@ public class RecipeIngredientController {
     @GetMapping("/")
     public String getAllRecipes(Model model) {
 
-        model.addAttribute("recipeIngredient", recipeIngredientRepository.findAll());
+        model.addAttribute("recipeIngredients", recipeIngredientRepository.findAll());
 
         return "recipeIngredient/recipeIngredients";
     }

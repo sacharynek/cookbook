@@ -6,6 +6,13 @@
 </head>
 <body>
 
+ul class="breadcrumb" >
+<li th:each="entry : ${sessionScope.currentBreadCrumb}">
+  <a th:href="${entry.queryString}" th:unless="${entry.isCurrent}" th:text="${entry.label}">Home</a>
+  <span th:if="${entry.isCurrent}" th:text="${entry.label}">Home</span>
+</li>
+</ul>
+
 <ul th:each="recipe: ${recipes}">
   <li>
     <a th:href="@{'/recipes/'+${recipe.id}}"><span th:text="${recipe.getName()}"></span></a>
@@ -16,5 +23,7 @@
 </ul>
 
 <a href="/recipes/add">Dodaj</a>
+<a href="/">Powrót</a>
+
 </body>
 </html>
