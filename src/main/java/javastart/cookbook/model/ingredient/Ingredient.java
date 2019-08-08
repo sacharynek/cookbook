@@ -1,29 +1,33 @@
 package javastart.cookbook.model.ingredient;
 
+import javastart.cookbook.model.recipeingredient.RecipeIngredient;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Ingredient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private Unit unit;
+    @OneToMany(mappedBy = "ingredient")
+    private List<RecipeIngredient> recipeIngredients;
+
 
     public Ingredient() {
     }
 
-    public Ingredient(String name, Unit unit) {
+    public Ingredient(String name) {
         this.name = name;
-        this.unit = unit;
+
     }
 
     public Long getId() {
@@ -42,11 +46,5 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Unit getUnit() {
-        return unit;
-    }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
-    }
 }

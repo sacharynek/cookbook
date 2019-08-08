@@ -1,12 +1,14 @@
 package javastart.cookbook.model.recipe;
 
-import javastart.cookbook.model.ingredient.Ingredient;
+import javastart.cookbook.model.recipeingredient.RecipeIngredient;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Map;
+import javax.persistence.OneToMany;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Recipe {
@@ -15,11 +17,16 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-   // private Map<Ingredient, Integer> ingredientAmountMap; //ingredient and amount
-
     private String instruction;
 
-    private String photo;
+    private String photo;//tymczasowo przechowujmy link do foto
+
+    @OneToMany(mappedBy = "recipe")
+    private List<RecipeIngredient> recipeIngredient;
+
+    private boolean isDraft;
+    private LocalDate draftCreationDate;
+
+
 
 }
