@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Controller
@@ -20,16 +21,16 @@ public class RecipeIngredientController {
     }
 
     @GetMapping("/")
-    public String getAllRecipes(Model model) {
-
+    public String getAllRecipes(HttpServletRequest request, Model model) {
+        System.out.println(request.getRequestURL());
         model.addAttribute("recipeIngredients", recipeIngredientRepository.findAll());
 
         return "recipeIngredient/recipeIngredients";
     }
 
-    //todo
     @GetMapping("/{id}")
-    public String getRecipeById(Model model, @PathVariable(value = "id") Long id) {
+    public String getRecipeById(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
+        System.out.println(request.getRequestURL());
 
         Optional<RecipeIngredient> recipeIngredientOptional = recipeIngredientRepository.findById(id);
 
@@ -51,14 +52,14 @@ public class RecipeIngredientController {
         return "recipeIngredient/addRecipeIngredientForm";
     }
 
-    //todo
     //dodaje nowy składnik do bazy danych
     @PostMapping("/add")
     public String editChosenRecipeIngriedient(RecipeIngredient recipeIngredient) {
 
-        recipeIngredientRepository.save(recipeIngredient);
-
-        return "redirect:/recipesIngredient/";
+        if (!recipeIngredient.equals(null)) {
+            recipeIngredientRepository.save(recipeIngredient);
+        }
+        return "redirect:/recipeingredient/";
     }
 
     //todo

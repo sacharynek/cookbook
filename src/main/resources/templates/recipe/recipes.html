@@ -6,12 +6,7 @@
 </head>
 <body>
 
-ul class="breadcrumb" >
-<li th:each="entry : ${sessionScope.currentBreadCrumb}">
-  <a th:href="${entry.queryString}" th:unless="${entry.isCurrent}" th:text="${entry.label}">Home</a>
-  <span th:if="${entry.isCurrent}" th:text="${entry.label}">Home</span>
-</li>
-</ul>
+
 
 <ul th:each="recipe: ${recipes}">
   <li>

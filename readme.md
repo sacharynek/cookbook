@@ -12,7 +12,7 @@ todo:
 - Add possibility of linking videos from youtube
 - ##figure out how to add new units, ingredients etc while adding new recipe
 - Implement Log in (basicAuth - optional)
-- Implement breadcrumbs (optional)
+- Implement breadcrumbs (optional) -> use this method System.out.println(request.getRequestURL()); -> parse the output accordingly !!!!!!
 - Implement css : movie in the background of main page, Top Menu and footer the same on every page, CSS Grid - it will be displayed on different devices 
 - Update the Data Base schema picture - it is outdated. Prepare documentation - do not have to be extensive. Just simple one.
 - #Unit Test

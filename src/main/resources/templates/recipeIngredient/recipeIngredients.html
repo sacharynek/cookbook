@@ -24,14 +24,15 @@
 
   <tr th:each="recipeIngredient: ${recipeIngredients}">
     <td th:text="${recipeIngredient.id}"></td>
+
     <td th:text="${recipeIngredient.getIngredient().getName()}"></td>
     <td th:text="${recipeIngredient.getRecipe().getName()}"></td>
     <td th:text="${recipeIngredient.getAmount()}"></td>
     <td th:text="${recipeIngredient.getUnit()}"></td>
     <!--    <td><a th:href="@{'/ingredients/'+${ingredient.id}}">DETAILS</a></td>-->
-    <td><a th:href="|/recipeIngredients/${recipeIngredient.id}/|">DETAILS</a></td>
-    <td><a th:href="@{'/recipeIngredients/'+${recipeIngredient.id}+'/edit'}">EDIT</a></td>
-    <td><a th:href="@{'/recipeIngredients/'+${recipeIngredient.id}+'/delete'}">DELETE</a></td>
+    <td><a th:href="|/recipeingredient/${recipeIngredient.id}|">DETAILS</a></td>
+    <td><a th:href="@{'/recipeingredient/'+${recipeIngredient.id}+'/edit'}">EDIT</a></td>
+    <td><a th:href="@{'/recipeingredient/'+${recipeIngredient.id}+'/delete'}">DELETE</a></td>
   </tr>
 
 

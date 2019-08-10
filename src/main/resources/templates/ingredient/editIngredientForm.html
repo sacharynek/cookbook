@@ -11,6 +11,7 @@
 
 <form action="/ingredients/add" method="post" th:object="${ingredient}">
   <input th:field="*{id}" type="hidden"/>
+
   <input th:field="*{name}" type="text"/>
 
 <!--  <select th:field="*{unit}">-->

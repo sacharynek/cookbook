@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<form action="/recipeingredient/add" method="post" th:object="${recipeIngredient}">
+  <input th:field="*{id}" type="hidden"/>
+  <input th:field="*{recipe.id}" type="hidden"/>
+  <input th:field="*{ingredient.id}" type="hidden"/>
+
+  <label>Jednostka
+    <input name="name" type="text" th:field="*{unit}"/>
+  </label>
+
+  <label>link do fotografi
+    <input name="photoURL" type="text" th:field="*{amount}"/>
+  </label>
+
+<input type="submit" value="Zapisz zmiany"/>
+</form>
+
+
+<a href="/recipes/">Powrót</a>
+
+</body>
+</html>
