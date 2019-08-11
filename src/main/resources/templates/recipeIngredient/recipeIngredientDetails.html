@@ -6,16 +6,18 @@
   <title>Title</title>
 </head>
 <body>
+<div th:replace="topmenufragment :: header"></div>
 
-<ul class="breadcrumbs" th:each="breadcrumb: ${breadcrumbs}">
-  <li>
-    <a th:href="|${breadcrumb}|">
-        <span th:text="${breadcrumb}">
 
-        </span>
-    </a>
-  </li>
-</ul>
+<!--<ul class="breadcrumbs" th:each="breadcrumb: ${breadcrumbs}">-->
+<!--  <li>-->
+<!--    <a th:href="|${breadcrumb}|">-->
+<!--        <span th:text="${breadcrumb}">-->
+
+<!--        </span>-->
+<!--    </a>-->
+<!--  </li>-->
+<!--</ul>-->
 
 <br/>
 <br/>
@@ -29,6 +31,9 @@
 </ul>
 
 <a href="/recipes/">Powrót</a>
+
+
+<div th:replace="topmenufragment :: footer"></div>
 
 </body>
 </html>
