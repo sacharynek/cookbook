@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,11 +70,16 @@ public class RecipeIngredientController extends AbstractController {
 
     //dodaje nowy składnik do bazy danych
     @PostMapping("/add")
-    public String editChosenRecipeIngriedient(HttpServletRequest request, RecipeIngredient recipeIngredient) {
+    public String editChosenRecipeIngriedient(HttpServletRequest request, RecipeIngredient recipeIngredient , @RequestParam(value = "redirect", required = false) boolean redirect) {
 
         if (!recipeIngredient.equals(null)) {
             recipeIngredientRepository.save(recipeIngredient);
         }
+
+        if (redirect) {
+            return "redirect:/recipes/" + recipeIngredient.getRecipe().getId()+"/edit";
+        }
+
         return "redirect:/recipeingredient/";
     }
 

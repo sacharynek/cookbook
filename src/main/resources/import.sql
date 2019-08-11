@@ -4,8 +4,8 @@ INSERT INTO INGREDIENT (NAME) VALUES ('Cukier')
 INSERT INTO INGREDIENT (NAME) VALUES ('Sol')
 INSERT INTO INGREDIENT (name) VALUES ('Ziemniaki')
 
-INSERT INTO RECIPE (NAME, INSTRUCTION, IS_DRAFT,PHOTOURL,LIKE_COUNTER) VALUES ('Placki Ziemniaczane', 'Zetrzyj ziemniaki', 'TRUE', 'https://www.zajadam.pl/wp-content/uploads/2014/09/placki-ziemniaczane-9-654x433.jpg','0')
-INSERT INTO RECIPE (NAME, INSTRUCTION, IS_DRAFT,PHOTOURL, LIKE_COUNTER) VALUES ('Pierogi', 'Zagnieć ciasto', 'TRUE','http://www.tapenda.pl/obr/upl/ciasto_na_pierogi.jpg','0')
+INSERT INTO RECIPE (NAME, INSTRUCTION, DRAFT,PHOTOURL,LIKE_COUNTER) VALUES ('Placki Ziemniaczane', 'Zetrzyj ziemniaki', 'TRUE', 'https://www.zajadam.pl/wp-content/uploads/2014/09/placki-ziemniaczane-9-654x433.jpg','0')
+INSERT INTO RECIPE (NAME, INSTRUCTION, DRAFT,PHOTOURL, LIKE_COUNTER) VALUES ('Pierogi', 'Zagnieć ciasto', 'TRUE','http://www.tapenda.pl/obr/upl/ciasto_na_pierogi.jpg','0')
 
 INSERT INTO RECIPE_INGREDIENT (AMOUNT, UNIT, INGREDIENT_ID, RECIPE_ID ) VALUES ( '1000', 'GRAM', '5', '1')
 INSERT INTO RECIPE_INGREDIENT (AMOUNT, UNIT, INGREDIENT_ID, RECIPE_ID ) VALUES ( '10', 'GRAM', '4', '1')

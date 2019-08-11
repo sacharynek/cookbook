@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -9,25 +9,65 @@
 <div th:replace="topmenufragment :: header"></div>
 
 
-<form action="/recipes/add" method="post">
+<form action="/recipes/add?redirect=true" method="post" th:object="${recipe}">
 
   <label>Tytuł przepisu
-    <input name="name" type="text"/>
+    <input name="name" type="text" th:field="*{name}"/>
   </label>
   <label>Instrukcje
-    <textarea name="instruction"></textarea>
+    <textarea name="instruction" th:field="*{instruction}"></textarea>
   </label>
   <label>link do fotografi
-    <input name="photoURL" type="text"/>
+    <input name="photoURL" type="text" th:field="*{photoURL}"/>
   </label>
 
-  <!--  <select name="unit">-->
-<!--    <option value="GRAM">GRAM</option>-->
-<!--    <option value="MILILITER">MILILITER</option>-->
-<!--  </select>-->
+  <label> Czy Draft
+  <input name="draft" type="checkbox" th:value="*{draft}" checked> </label>
 
-  <button type="submit">Dodaj</button>
+  <button type="submit">Dodaj Przepis</button>
 </form>
+
+
+<!--  RecipeIngredientForm -->
+
+<form action="/recipeingredient/add?redirect=true" method="post" th:object="${recipeIngredient}">
+  <input th:field="*{id}" type="hidden"/>
+  <input th:field="*{recipe.id}" type="hidden" th:value="${recipe.id}"/>
+<!--  <input th:field="*{ingredient.id}" type="hidden"/>-->
+<br/>
+  <label>Składniki
+    <select th:field="*{ingredient}">
+      <option th:each="ingredient: ${existingIngredients}"
+              th:text="${ingredient.name}"
+              th:value="${ingredient.id}">
+      </option>
+    </select>
+  </label>
+
+  <!--  <ul th:each="recipeIngredient: ${)}">-->
+  <!--    <li th:text="${recipeIngredient}"></li>-->
+  <!--  </ul>-->
+
+  <br/>
+  <label> Jednostki
+    <select th:field="*{unit}">
+      <option th:each="Ingredientunit: ${units}"
+              th:text="${Ingredientunit}"
+              th:value="${Ingredientunit}">
+      </option>
+    </select>
+  </label>
+
+
+  <br/>
+  <label>Ilość
+    <input name="amount" type="text" th:field="*{amount}"/>
+  </label>
+  <br/>
+  <input type="submit" value="Zapisz RecipeIngredient"/>
+</form>
+
+
 <div th:replace="topmenufragment :: footer"></div>
 </body>
 </html>

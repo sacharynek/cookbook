@@ -60,6 +60,7 @@ public class IngredientController extends AbstractController {
     public String editChosenIngriedient(HttpServletRequest request, Model model) {
         List<String> breadcrumbs =  produceBreadcrumbs(request);
         model.addAttribute("breadcrumbs", breadcrumbs);
+//        model.addAttribute("ingredientUnits", Unit.values());
         return "ingredient/addIngredientForm";
     }
 

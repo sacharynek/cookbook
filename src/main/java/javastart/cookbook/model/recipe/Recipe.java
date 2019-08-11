@@ -29,7 +29,7 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe")
     private List<RecipeIngredient> recipeIngredient;
 
-    private boolean isDraft;
+    private boolean draft;
     private LocalDateTime draftCreationDateTime;
 
     private int likeCounter;
@@ -44,12 +44,12 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String name, String instruction, String photoURL, List<RecipeIngredient> recipeIngredient, boolean isDraft, LocalDateTime draftCreationDateTime, Integer likeCounter) {
+    public Recipe(String name, String instruction, String photoURL, List<RecipeIngredient> recipeIngredient, boolean draft, LocalDateTime draftCreationDateTime, Integer likeCounter) {
         this.name = name;
         this.instruction = instruction;
         this.photoURL = photoURL;
         this.recipeIngredient = recipeIngredient;
-        this.isDraft = isDraft;
+        this.draft = draft;
         this.draftCreationDateTime = draftCreationDateTime;
         this.likeCounter = likeCounter;
     }
@@ -95,11 +95,11 @@ public class Recipe {
     }
 
     public boolean isDraft() {
-        return isDraft;
+        return draft;
     }
 
     public void setDraft(boolean draft) {
-        isDraft = draft;
+        this.draft = draft;
     }
 
     public LocalDateTime getDraftCreationDateTime() {

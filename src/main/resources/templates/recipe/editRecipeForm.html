@@ -14,30 +14,70 @@
   <label>Tytuł przepisu
     <input name="name" type="text" th:value="*{name}"/>
   </label>
-  <label>
-    <br/>
-    Składniki
-    //tutaj musi być formularz dodoawania recipe ingredient
-    //Musimy wyświetlić widoczne recipe ingredient, ale jeżeli jakiegoś składnika nie ma, to trzeba go dodać oddzielnie.
-    //ten formularz de facto będzie tez tworzył recipe ingredient oprócz samego recipe!!!
-    <input th:each="ingredient: ${recipe.getRecipeIngredient()}" th:value="${ingredient.ingredient.name}"/> <br/>
-  </label>
 
+  <br/>
   <label>Instrukcje
     <textarea name="instruction" th:text="*{instruction}"></textarea>
   </label>
+  <br/>
   <label>link do fotografi
     <input name="photoURL" type="text" th:value="*{photoURL}"/>
   </label>
+  <br/>
 
+  Składniki
 
-  <!--  <select name="unit">-->
-<!--    <option value="GRAM">GRAM</option>-->
-<!--    <option value="MILILITER">MILILITER</option>-->
-<!--  </select>-->
-
-  <button type="submit">Dodaj</button>
+  <br/>
+  <div th:each="ingredient: ${recipe.getRecipeIngredient()}">
+    <label> Składnik
+      <input th:value="${ingredient.ingredient.name}"  disabled/>
+      <input th:value="${ingredient.getAmount()}" disabled >
+      <input th:value="${ingredient.getUnit()}" disabled>
+      trzeba dorobić jeszcze opcję kasowania  kazdej z pozycji - tak aby powracało na stronę edit
+    </label>
+    <br/>
+  </div>
+  <button type="submit">Zapisz</button>
 </form>
+
+  RecipeIngredientForm
+
+<form action="/recipeingredient/add?redirect=true" method="post" th:object="${recipeIngredient}">
+  <input th:field="*{id}" type="hidden"/>
+  <input th:field="*{recipe.id}" type="hidden" th:value="${recipe.id}"/>
+  <!--  <input th:field="*{ingredient.id}" type="hidden"/>-->
+  <br/>
+  <label>Składniki
+    <br/> <h1>Brakuje składnika? Dodaj go najpierw <a href="/ingredients/add" target="_blank">tutaj</a></h1>
+    <select th:field="*{ingredient}">
+      <option th:each="ingredient: ${existingIngredients}"
+              th:text="${ingredient.name}"
+              th:value="${ingredient.id}">
+      </option>
+    </select>
+  </label>
+
+
+  <br/>
+  <label> Jednostki
+    <select th:field="*{unit}">
+      <option th:each="Ingredientunit: ${units}"
+              th:text="${Ingredientunit}"
+              th:value="${Ingredientunit}">
+      </option>
+    </select>
+  </label>
+
+
+  <br/>
+  <label>Ilość
+    <input name="amount" type="text" th:field="*{amount}"/>
+  </label>
+  <br/>
+  <input type="submit" value="Zapisz RecipeIngredient"/>
+</form>
+
+
 <div th:replace="topmenufragment :: footer"></div>
 </body>
 </html>

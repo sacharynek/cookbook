@@ -18,6 +18,7 @@
     <th>Like</th>
     <th>dislike</th>
     <th>Liczba Lików</th>
+    <th>Czy Draft?</th>
   </tr>
   </thead>
   <tbody>
@@ -29,6 +30,7 @@
     <td>  <a th:href="@{'/recipes/'+${recipe.id}+'/like?redirect=true'}">like</a></td>
     <td>  <a th:href="@{'/recipes/'+${recipe.id}+'/dislike?redirect=true'}">dislike</a></td>
     <td th:text="${recipe.getLikeCounter()}"></td>
+    <td th:text="${recipe.isDraft()}"></td>
   </tr>
   </tbody>
 </table>

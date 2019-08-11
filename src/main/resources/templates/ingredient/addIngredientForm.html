@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -12,10 +12,14 @@
 
   <input name="name" type="text"/>
 
-<!--  <select name="unit">-->
-<!--    <option value="GRAM">GRAM</option>-->
-<!--    <option value="MILILITER">MILILITER</option>-->
-<!--  </select>-->
+<!--  <label> Jednostki-->
+<!--    <select name="unit">-->
+<!--      <option th:each="ingredientUnit: ${ingredientUnits}"-->
+<!--              th:text="${ingredientUnit}"-->
+<!--              th:value="${ingredientUnit}">-->
+<!--      </option>-->
+<!--    </select>-->
+<!--  </label>-->
 
   <button type="submit">Dodaj</button>
 </form>
