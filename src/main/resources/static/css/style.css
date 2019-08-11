@@ -1,0 +1,24 @@
+ul.breadcrumbs {
+    list-style-type: none;
+
+}
+
+ul.breadcrumbs li {
+    display: inline-block;
+    width: auto;
+    float: left;
+    list-style: outside none none;
+    padding:10px;
+
+}
+
+ul.breadcrumbs li:before {
+    content: "\>";
+}
+
+ul.breadcrumbs li span {
+    position: relative;
+    left: 10px;
+
+}
+

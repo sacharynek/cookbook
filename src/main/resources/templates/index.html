@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Witaj w bibliotece książek kucharskich!</title>
@@ -9,6 +9,9 @@
 <h1>Witaj w bibliotece książek kucharskich !!!!</h1>
 <h2>Szef Tomasz zaprasza !!!!</h2>
 
+<ul th:each ="breadcrumb: ${breadcrumbs}">
+  <li th:text ="breadcrumb"></li>
+</ul>
 
 <ul>
 

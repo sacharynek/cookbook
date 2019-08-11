@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 <body>
 
+<ul class="breadcrumbs" th:each="breadcrumb: ${breadcrumbs}">
+  <li>
+    <a th:href="|${breadcrumb}|">
+        <span th:text="${breadcrumb}">
+
+        </span>
+    </a>
+  </li>
+</ul>
+
+<br/>
+<br/>
+
 <ul>
   <li th:text="${recipeIngredient.getId()}"></li>
-  <li th:text = "${recipeIngredient.getUnit()}"></li>
+  <li th:text="${recipeIngredient.getUnit()}"></li>
   <li th:text="${recipeIngredient.getIngredient().getName()}"></li>
 
-  <li th:text = "${recipeIngredient.getRecipe().getName()}"></li>
+  <li th:text="${recipeIngredient.getRecipe().getName()}"></li>
 </ul>
 
 <a href="/recipes/">Powrót</a>

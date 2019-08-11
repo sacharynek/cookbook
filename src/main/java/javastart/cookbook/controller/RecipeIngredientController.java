@@ -38,12 +38,13 @@ public class RecipeIngredientController extends AbstractController {
 
     @GetMapping("/{id}")
     public String getRecipeById(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
-        System.out.println(request.getRequestURL());
-        produceBreadcrumbs(request);
+
+        List<String> breadcrumbs =  produceBreadcrumbs(request);
         Optional<RecipeIngredient> recipeIngredientOptional = recipeIngredientRepository.findById(id);
 
         if (recipeIngredientOptional.isPresent()) {
             RecipeIngredient recipeIngredient = recipeIngredientOptional.get();
+            model.addAttribute("breadcrumbs", breadcrumbs);
             model.addAttribute("recipeIngredient", recipeIngredient);
             return "recipeIngredient/recipeIngredientDetails";
         } else {
