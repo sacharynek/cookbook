@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
+<div th:replace="topmenufragment :: header"></div>
 
 
 <form action="/recipes/add" method="post" th:object="${recipe}">

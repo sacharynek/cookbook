@@ -29,7 +29,8 @@ public class RecipeIngredientController extends AbstractController {
 
     @GetMapping("/")
     public String getAllRecipes(HttpServletRequest request, Model model) {
-        System.out.println(request.getRequestURL());
+        List<String> breadcrumbs =  produceBreadcrumbs(request);
+        model.addAttribute("breadcrumbs", breadcrumbs);
         produceBreadcrumbs(request);
         model.addAttribute("recipeIngredients", recipeIngredientRepository.findAll());
 
@@ -40,11 +41,13 @@ public class RecipeIngredientController extends AbstractController {
     public String getRecipeById(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
 
         List<String> breadcrumbs =  produceBreadcrumbs(request);
+        model.addAttribute("breadcrumbs", breadcrumbs);
+
         Optional<RecipeIngredient> recipeIngredientOptional = recipeIngredientRepository.findById(id);
 
         if (recipeIngredientOptional.isPresent()) {
             RecipeIngredient recipeIngredient = recipeIngredientOptional.get();
-            model.addAttribute("breadcrumbs", breadcrumbs);
+
             model.addAttribute("recipeIngredient", recipeIngredient);
             return "recipeIngredient/recipeIngredientDetails";
         } else {
@@ -56,14 +59,16 @@ public class RecipeIngredientController extends AbstractController {
     //przekierowuje na formularz do dodania nowego składnika
     @GetMapping("/add")
     public String editChosenIngriedient(HttpServletRequest request, Model model) {
-        System.out.println(request.getRequestURL());
+        List<String> breadcrumbs =  produceBreadcrumbs(request);
+        model.addAttribute("breadcrumbs", breadcrumbs);
+
         return "recipeIngredient/addRecipeIngredientForm";
     }
 
     //dodaje nowy składnik do bazy danych
     @PostMapping("/add")
     public String editChosenRecipeIngriedient(HttpServletRequest request, RecipeIngredient recipeIngredient) {
-        System.out.println(request.getRequestURL());
+
         if (!recipeIngredient.equals(null)) {
             recipeIngredientRepository.save(recipeIngredient);
         }
@@ -73,6 +78,8 @@ public class RecipeIngredientController extends AbstractController {
     //todo
     @GetMapping("/{id}/edit")
     public String editChosenIngriedient(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
+        List<String> breadcrumbs =  produceBreadcrumbs(request);
+        model.addAttribute("breadcrumbs", breadcrumbs);
 
         Optional<RecipeIngredient> recipeIngredientOptional = recipeIngredientRepository.findById(id);
         List<Ingredient> ingredients = ingredientRepository.findAll();
@@ -92,7 +99,7 @@ public class RecipeIngredientController extends AbstractController {
     //todo
     @GetMapping("/{id}/delete")
     public String deleteChosenIngredient(HttpServletRequest request, @PathVariable(value = "id") Long id) {
-        System.out.println(request.getRequestURL());
+
         Optional<RecipeIngredient> recipeIngredientOptional = recipeIngredientRepository.findById(id);
 
         if (recipeIngredientOptional.isPresent()) {

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <h1>Skladniki</h1>
@@ -21,6 +22,7 @@
   </tr>
   </thead>
   <tbody>
+  <div th:replace="topmenufragment :: header"></div>
 
   <tr th:each="recipeIngredient: ${recipeIngredients}">
     <td th:text="${recipeIngredient.id}"></td>
