@@ -9,14 +9,27 @@
 <form action="/recipeingredient/add" method="post" th:object="${recipeIngredient}">
   <input th:field="*{id}" type="hidden"/>
   <input th:field="*{recipe.id}" type="hidden"/>
-  <input th:field="*{ingredient.id}" type="hidden"/>
+<!--  <input th:field="*{ingredient.id}" type="hidden"/>-->
+
+  <select th:field="*{ingredient}">
+    <option th:each="ingredient: ${ingredients}"
+            th:text="${ingredient.name}"
+            th:value="${ingredient.id}">
+    </option>
+  </select>
+
+<!--  <ul th:each="recipeIngredient: ${)}">-->
+<!--    <li th:text="${recipeIngredient}"></li>-->
+<!--  </ul>-->
+
+
 
   <label>Jednostka
     <input name="name" type="text" th:field="*{unit}"/>
   </label>
 
-  <label>link do fotografi
-    <input name="photoURL" type="text" th:field="*{amount}"/>
+  <label>Ilość
+    <input name="amount" type="text" th:field="*{amount}"/>
   </label>
 
 <input type="submit" value="Zapisz zmiany"/>

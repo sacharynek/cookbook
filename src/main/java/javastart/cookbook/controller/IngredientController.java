@@ -1,5 +1,8 @@
-package javastart.cookbook.model.ingredient;
+package javastart.cookbook.controller;
 
+import javastart.cookbook.model.ingredient.Ingredient;
+import javastart.cookbook.model.ingredient.Unit;
+import javastart.cookbook.repository.IngredientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,25 +10,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/ingredients")
 @Controller
-public class IngredientController {
+public class IngredientController extends AbstractController {
 
 
     private IngredientRepository ingredientRepository;
 
-    public IngredientController(IngredientRepository ingredientRepository) {
+    public IngredientController(HttpServletRequest request, IngredientRepository ingredientRepository) {
 
         this.ingredientRepository = ingredientRepository;
     }
 
     //Wyświetla wszystkie składniki
     @GetMapping("/")
-    public String getAllIngredients(Model model) {
-
+    public String getAllIngredients(HttpServletRequest request, Model model) {
+        System.out.println(request.getRequestURL());
         List<Ingredient> ingredients = ingredientRepository.findAll();
         model.addAttribute("ingredients", ingredients);
 
@@ -35,8 +39,8 @@ public class IngredientController {
 
     //wyświetla wybrany składnik
     @GetMapping("/{id}")
-    public String getIngriedientById(Model model, @PathVariable(value = "id") Long id) {
-
+    public String getIngriedientById(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
+        System.out.println(request.getRequestURL());
         Optional<Ingredient> ingredientOption = ingredientRepository.findById(id);
 
         if (ingredientOption.isPresent()) {
@@ -51,23 +55,23 @@ public class IngredientController {
 
     //przekierowuje na formularz do dodania nowego składnika
     @GetMapping("/add")
-    public String editChosenIngriedient(Model model) {
-
+    public String editChosenIngriedient(HttpServletRequest request, Model model) {
+        System.out.println(request.getRequestURL());
         return "ingredient/addIngredientForm";
     }
 
     //dodaje nowy składnik do bazy danych
     @PostMapping("/add")
-    public String editChosenIngriedient(Ingredient ingredient) {
-
+    public String editChosenIngriedient(HttpServletRequest request, Ingredient ingredient) {
+        System.out.println(request.getRequestURL());
         ingredientRepository.save(ingredient);
 
         return "redirect:/ingredients/";
     }
 
     @GetMapping("/{id}/edit")
-    public String editChosenIngriedient(Model model, @PathVariable(value = "id") Long id) {
-
+    public String editChosenIngriedient(HttpServletRequest request, Model model, @PathVariable(value = "id") Long id) {
+        System.out.println(request.getRequestURL());
         Optional<Ingredient> ingredientOption = ingredientRepository.findById(id);
 
         if (ingredientOption.isPresent()) {
@@ -82,8 +86,8 @@ public class IngredientController {
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteChosenIngredient(@PathVariable(value = "id") Long id) {
-
+    public String deleteChosenIngredient(HttpServletRequest request, @PathVariable(value = "id") Long id) {
+        System.out.println(request.getRequestURL());
         Optional<Ingredient> ingredientOption = ingredientRepository.findById(id);
 
         if (ingredientOption.isPresent()) {

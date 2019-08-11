@@ -12,6 +12,15 @@
   <label>Tytuł przepisu
     <input name="name" type="text" th:value="*{name}"/>
   </label>
+  <label>
+    <br/>
+    Składniki
+    //tutaj musi być formularz dodoawania recipe ingredient
+    //Musimy wyświetlić widoczne recipe ingredient, ale jeżeli jakiegoś składnika nie ma, to trzeba go dodać oddzielnie.
+    //ten formularz de facto będzie tez tworzył recipe ingredient oprócz samego recipe!!!
+    <input th:each="ingredient: ${recipe.getRecipeIngredient()}" th:value="${ingredient.ingredient.name}"/> <br/>
+  </label>
+
   <label>Instrukcje
     <textarea name="instruction" th:text="*{instruction}"></textarea>
   </label>

@@ -87,6 +87,6 @@ public class RecipeIngredient {
     public String toString() {
         return ingredient.getName() +
                 " " + amount +
-                " " + unit ;
+                " " + unit;
     }
 }
