@@ -32,6 +32,8 @@ public class Recipe {
     private boolean isDraft;
     private LocalDateTime draftCreationDateTime;
 
+    private int likeCounter;
+
     /**
      * todo
      * kategorie - zastanów sie czy ma to być select, czy po prostu pole string?
@@ -42,13 +44,14 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String name, String instruction, String photoURL, List<RecipeIngredient> recipeIngredient, boolean isDraft, LocalDateTime draftCreationDateTime) {
+    public Recipe(String name, String instruction, String photoURL, List<RecipeIngredient> recipeIngredient, boolean isDraft, LocalDateTime draftCreationDateTime, Integer likeCounter) {
         this.name = name;
         this.instruction = instruction;
         this.photoURL = photoURL;
         this.recipeIngredient = recipeIngredient;
         this.isDraft = isDraft;
         this.draftCreationDateTime = draftCreationDateTime;
+        this.likeCounter = likeCounter;
     }
 
     public Long getId() {
@@ -105,5 +108,14 @@ public class Recipe {
 
     public void setDraftCreationDateTime(LocalDateTime draftCreationDateTime) {
         this.draftCreationDateTime = draftCreationDateTime;
+    }
+
+
+    public int getLikeCounter() {
+        return likeCounter;
+    }
+
+    public void setLikeCounter(int likeCounter) {
+        this.likeCounter = likeCounter;
     }
 }

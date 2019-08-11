@@ -25,10 +25,16 @@
 <!--  </ul>-->
 
 
-
-  <label>Jednostka
-    <input name="name" type="text" th:field="*{unit}"/>
+  <label> Jednostki
+    <select th:field="*{unit}">
+      <option th:each="Ingredientunit: ${Ingredientunits}"
+              th:text="${Ingredientunit}"
+              th:value="${Ingredientunit}">
+      </option>
+    </select>
   </label>
+
+
 
   <label>Ilość
     <input name="amount" type="text" th:field="*{amount}"/>
@@ -39,6 +45,6 @@
 
 
 <a href="/recipes/">Powrót</a>
-
+<div th:replace="topmenufragment :: footer"></div>
 </body>
 </html>

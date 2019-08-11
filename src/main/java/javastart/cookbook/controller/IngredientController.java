@@ -1,7 +1,7 @@
 package javastart.cookbook.controller;
 
 import javastart.cookbook.model.ingredient.Ingredient;
-import javastart.cookbook.model.ingredient.Unit;
+import javastart.cookbook.model.recipeingredient.Unit;
 import javastart.cookbook.repository.IngredientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

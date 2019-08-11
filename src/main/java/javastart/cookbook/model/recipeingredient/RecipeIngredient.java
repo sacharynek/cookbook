@@ -1,7 +1,6 @@
 package javastart.cookbook.model.recipeingredient;
 
 import javastart.cookbook.model.ingredient.Ingredient;
-import javastart.cookbook.model.ingredient.Unit;
 import javastart.cookbook.model.recipe.Recipe;
 
 import javax.persistence.Entity;

@@ -9,17 +9,41 @@
 
 <div th:replace="topmenufragment :: header"></div>
 
-<ul>
-  <li th:text="${recipe.getName()}"></li>
-  <ul th:each="recipeIngredient: ${recipe.getRecipeIngredient()}">
-    <li th:text="${recipeIngredient}"></li>
-  </ul>
 
-  <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
-  <li th:text="${recipe.getInstruction()}"></li>
-</ul>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="RecipeName" th:text="${recipe.getName()}"></td>
+  </tr>
+  <tr>
+    <td class="RecipeImage"><img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/></td>
+  </tr>
 
-<a href="/recipes/">Powrót</a>
 
+  <tr th:each="recipeIngredient: ${recipe.getRecipeIngredient()}">
+    <td class="RecipeInstruction" th:text="${recipeIngredient}"></td>
+  </tr>
+
+  <tr>
+    <td th:text="${recipe.getInstruction()}"></td>
+  </tr>
+  <tr>
+    <td th:text="${recipe.getLikeCounter()}"></td>
+  </tr>
+
+
+  </tbody>
+</table>
+
+
+<button> <a th:href="@{'/recipes/'+${recipe.id}+'/like'}">like</a></button>
+<button>  <a th:href="@{'/recipes/'+${recipe.id}+'/dislike'}">dislike</a></button>
+
+<div th:replace="topmenufragment :: footer"></div>
 </body>
 </html>

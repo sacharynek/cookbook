@@ -8,19 +8,35 @@
 <body>
 <div th:replace="topmenufragment :: header"></div>
 
+<table>
+  <thead>
+  <tr>
+    <th>Recipe Name</th>
+    <th>Recipe Photo</th>
+    <th>Edytuj</th>
+    <th>Usuń</th>
+    <th>Like</th>
+    <th>dislike</th>
+    <th>Liczba Lików</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="recipe: ${recipes}">
+    <td><a th:href="@{'/recipes/'+${recipe.id}}"><span th:text="${recipe.getName()}"></span></a></td>
+    <td><img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/></td>
+    <td><a th:href="@{'/recipes/'+${recipe.id}+'/edit'}">Edytuj</a></td>
+    <td>  <a th:href="@{'/recipes/'+${recipe.id}+'/delete'}">Usun</a></td>
+    <td>  <a th:href="@{'/recipes/'+${recipe.id}+'/like?redirect=true'}">like</a></td>
+    <td>  <a th:href="@{'/recipes/'+${recipe.id}+'/dislike?redirect=true'}">dislike</a></td>
+    <td th:text="${recipe.getLikeCounter()}"></td>
+  </tr>
+  </tbody>
+</table>
 
 
-<ul th:each="recipe: ${recipes}">
-  <li>
-    <a th:href="@{'/recipes/'+${recipe.id}}"><span th:text="${recipe.getName()}"></span></a>
-    <img th:alt="${recipe.getName()}" th:src="${recipe.getPhotoURL()}"/>
-    <a th:href="@{'/recipes/'+${recipe.id}+'/edit'}">Edytuj</a>
-    <a th:href="@{'/recipes/'+${recipe.id}+'/delete'}">Usun</a>
-  </li>
-</ul>
 
-<a href="/recipes/add">Dodaj</a>
-<a href="/">Powrót</a>
+<button><a href="/recipes/add">Dodaj</a></button>
 
+<div th:replace="topmenufragment :: footer"></div>
 </body>
 </html>

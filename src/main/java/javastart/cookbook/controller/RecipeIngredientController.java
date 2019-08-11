@@ -2,6 +2,7 @@ package javastart.cookbook.controller;
 
 import javastart.cookbook.model.ingredient.Ingredient;
 import javastart.cookbook.model.recipeingredient.RecipeIngredient;
+import javastart.cookbook.model.recipeingredient.Unit;
 import javastart.cookbook.repository.IngredientRepository;
 import javastart.cookbook.repository.RecipeIngredientRepository;
 import org.springframework.stereotype.Controller;
@@ -88,6 +89,7 @@ public class RecipeIngredientController extends AbstractController {
             RecipeIngredient recipeIngredient = recipeIngredientOptional.get();
             model.addAttribute("recipeIngredient", recipeIngredient);
             model.addAttribute("ingredients", ingredients);
+            model.addAttribute("Ingredientunits", Unit.values());
 
             return "recipeIngredient/editRecipeIngredientForm";
         } else {
