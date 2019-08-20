@@ -6,6 +6,7 @@ import javastart.cookbook.model.recipeingredient.Unit;
 import javastart.cookbook.repository.IngredientRepository;
 import javastart.cookbook.repository.RecipeIngredientRepository;
 import javastart.cookbook.repository.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @RequestMapping("/recipes")
 @Controller
@@ -25,6 +27,9 @@ public class RecipeController extends AbstractController {
     RecipeRepository recipeRepository;
     IngredientRepository ingredientRepository;
     RecipeIngredientRepository recipeIngredientRepository;
+
+    @Autowired
+    Random random;
 
 
     public RecipeController(RecipeRepository recipeRepository,
